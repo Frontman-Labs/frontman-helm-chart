@@ -20,25 +20,25 @@ spec:
             - containerPort: 8000
           env:
             - name: FRONTMAN_SERVICE_TYPE
-              value: {{ .Values.gateway.serviceType }}
+              value: "{{ .Values.gateway.serviceType }}"
             - name: FRONTMAN_MONGO_URL
-              value: {{ .Values.gateway.mongoUrl }}
+              value: "{{ .Values.gateway.mongoUrl }}"
             - name: FRONTMAN_API_ADDR
-              value: {{ .Values.gateway.apiAddr }}
+              value: "{{ .Values.gateway.apiAddr }}"
             - name: FRONTMAN_GATEWAY_ADDR
-              value: {{ .Values.gateway.gatewayAddr }}
+              value: "{{ .Values.gateway.gatewayAddr }}"
             - name: FRONTMAN_API_SSL_ENABLED
-              value: {{ .Values.gateway.apiSslEnabled }}
+              value: "{{ .Values.gateway.apiSslEnabled }}"
             - name: FRONTMAN_API_SSL_CERT
-              value: {{ .Values.gateway.apiSslCertPath }}
+              value: "{{ .Values.gateway.apiSslCertPath }}"
             - name: FRONTMAN_API_SSL_KEY
-              value: {{ .Values.gateway.apiSslKeyPath }}
+              value: "{{ .Values.gateway.apiSslKeyPath }}"
             - name: FRONTMAN_GATEWAY_SSL_ENABLED
-              value: {{ .Values.gateway.gatewaySslEnabled }}
+              value: "{{ .Values.gateway.gatewaySslEnabled }}"
             - name: FRONTMAN_GATEWAY_SSL_CERT
-              value: {{ .Values.gateway.gatewaySslCertPath }}
+              value: "{{ .Values.gateway.gatewaySslCertPath }}"
             - name: FRONTMAN_GATEWAY_SSL_KEY
-              value: {{ .Values.gateway.gatewaySslKeyPath }}
+              value: "{{ .Values.gateway.gatewaySslKeyPath }}"
           volumeMounts:
             - name: certs
               mountPath: /certs

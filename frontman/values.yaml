@@ -5,10 +5,10 @@ gateway:
   mongoUrl: mongodb://mongo:27017
   apiAddr: 0.0.0.0:8080
   gatewayAddr: 0.0.0.0:8000
-  apiSslEnabled: "true"
+  apiSslEnabled: true
   apiSslCertPath: /certs/server.crt
   apiSslKeyPath: /certs/server.key
-  gatewaySslEnabled: "true"
+  gatewaySslEnabled: true
   gatewaySslCertPath: /certs/server.crt
   gatewaySslKeyPath: /certs/server.key
 domain:
