@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontman-gateway
+spec:
+  selector:
+    matchLabels:
+      app: frontman-gateway
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: frontman-gateway
+    spec:
+      containers:
+        - name: frontman-gateway
+          image: {{ .Values.gateway.image }}
+          ports:
+            - containerPort: 8080
+            - containerPort: 8000
+          env:
+            - name: FRONTMAN_SERVICE_TYPE
+              value: {{ .Values.gateway.serviceType }}
+            - name: FRONTMAN_MONGO_URL
+              value: {{ .Values.gateway.mongoUrl }}
+            - name: FRONTMAN_API_ADDR
+              value: {{ .Values.gateway.apiAddr }}
+            - name: FRONTMAN_GATEWAY_ADDR
+              value: {{ .Values.gateway.gatewayAddr }}
+            - name: FRONTMAN_API_SSL_ENABLED
+              value: {{ .Values.gateway.apiSslEnabled }}
+            - name: FRONTMAN_API_SSL_CERT
+              value: {{ .Values.gateway.apiSslCertPath }}
+            - name: FRONTMAN_API_SSL_KEY
+              value: {{ .Values.gateway.apiSslKeyPath }}
+            - name: FRONTMAN_GATEWAY_SSL_ENABLED
+              value: {{ .Values.gateway.gatewaySslEnabled }}
+            - name: FRONTMAN_GATEWAY_SSL_CERT
+              value: {{ .Values.gateway.gatewaySslCertPath }}
+            - name: FRONTMAN_GATEWAY_SSL_KEY
+              value: {{ .Values.gateway.gatewaySslKeyPath }}
+          volumeMounts:
+            - name: certs
+              mountPath: /certs
+      volumes:
+        - name: certs
+          configMap:
+            name: frontman-certs

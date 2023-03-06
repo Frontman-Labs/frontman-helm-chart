@@ -1,0 +1,16 @@
+# values.yaml
+gateway:
+  image: hyperioxx/frontman:latest
+  serviceType: mongo
+  mongoUrl: mongodb://mongo:27017
+  apiAddr: 0.0.0.0:8080
+  gatewayAddr: 0.0.0.0:8000
+  apiSslEnabled: true
+  apiSslCertPath: /certs/server.crt
+  apiSslKeyPath: /certs/server.key
+  gatewaySslEnabled: true
+  gatewaySslCertPath: /certs/server.crt
+  gatewaySslKeyPath: /certs/server.key
+domain:
+  api: example.com
+  gateway: gateway.example.com

@@ -1,0 +1,35 @@
+# templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: frontman-gateway-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: "/"
+spec:
+  rules:
+    - host: {{ .Values.domain.api }}
+      http:
+        paths:
+          - path: /api/*
+            pathType: Prefix
+            backend:
+              service:
+                name: frontman-gateway
+                port:
+                  name: api
+    - host: {{ .Values.domain.gateway }}
+      http:
+        paths:
+          - path: /*
+            pathType: Prefix
+            backend:
+              service:
+                name: frontman-gateway
+                port:
+                  name: gateway
+  tls:
+    - hosts:
+        - {{ .Values.domain.api }}
+        - {{ .Values.domain.gateway }}
+      secretName: tls-secret
