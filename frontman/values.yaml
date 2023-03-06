@@ -1,7 +1,7 @@
 # values.yaml
 gateway:
   image: hyperioxx/frontman:latest
-  serviceType: mongo
+  serviceType: yaml
   mongoUrl: mongodb://mongo:27017
   apiAddr: 0.0.0.0:8080
   gatewayAddr: 0.0.0.0:8000
