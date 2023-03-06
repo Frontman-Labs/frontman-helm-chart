@@ -39,10 +39,4 @@ spec:
               value: "{{ .Values.gateway.gatewaySslCertPath }}"
             - name: FRONTMAN_GATEWAY_SSL_KEY
               value: "{{ .Values.gateway.gatewaySslKeyPath }}"
-          volumeMounts:
-            - name: certs
-              mountPath: /certs
-      volumes:
-        - name: certs
-          configMap:
-            name: frontman-certs
+        
