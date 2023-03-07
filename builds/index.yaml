@@ -1,0 +1,17 @@
+apiVersion: v1
+entries:
+  frontman-gateway:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-03-07T23:06:30.87291Z"
+    description: A Helm chart for deploying the Frontman API Gateway
+    digest: 26d71a30f76bec59cd4283f2d82f7111f14b141eaab811647c014245ea12b48a
+    maintainers:
+    - email: simonchapman1986@gmail.com
+      name: Simon Chapman
+    name: frontman-gateway
+    type: application
+    urls:
+    - frontman-gateway-0.0.1.tgz
+    version: 0.0.1
+generated: "2023-03-07T23:06:30.869034Z"
