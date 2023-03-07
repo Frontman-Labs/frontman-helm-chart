@@ -1,0 +1,21 @@
+name: Build Chart
+on:
+  workflow_call:
+
+env:
+  PROJECT: ${{ github.event.repository.name }}
+  CODE_REPO: "frontman-labs/frontman-helm-chart"
+
+jobs:
+  alerts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout Frontman Helm
+        uses: actions/checkout@v3.3.0
+        with:
+          token: ${{ secrets.PAT }}
+          repository: ${{ env.CODE_REPO }}
+          ref: main
+          path: helm-chart
