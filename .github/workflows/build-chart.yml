@@ -1,0 +1,21 @@
+name: Build Chart
+on:
+  workflow_call:
+
+env:
+  PROJECT: ${{ github.event.repository.name }}
+  CODE_REPO: "frontman-labs/frontman"
+
+jobs:
+  alerts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out Alerts as Code repository code
+        uses: actions/checkout@v3.3.0
+        with:
+          token: ${{ secrets.PAT }}
+          repository: ${{ env.CLOUD_INFRASTRUCTURE_REPO }}
+          ref: main
+          path: tools
