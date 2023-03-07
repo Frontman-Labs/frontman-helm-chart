@@ -4,7 +4,7 @@ on:
 
 env:
   PROJECT: ${{ github.event.repository.name }}
-  CODE_REPO: "frontman-labs/frontman"
+  CODE_REPO: "frontman-labs/frontman-helm-chart"
 
 jobs:
   alerts:
@@ -12,10 +12,10 @@ jobs:
     timeout-minutes: 10
 
     steps:
-      - name: Check out Alerts as Code repository code
+      - name: Checkout Frontman Helm
         uses: actions/checkout@v3.3.0
         with:
           token: ${{ secrets.PAT }}
-          repository: ${{ env.CLOUD_INFRASTRUCTURE_REPO }}
+          repository: ${{ env.CODE_REPO }}
           ref: main
-          path: tools
+          path: helm-chart
