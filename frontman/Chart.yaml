@@ -5,5 +5,5 @@ description: A Helm chart for deploying the Frontman API Gateway
 type: application
 appVersion: 1.0.0
 maintainers:
-  - name: Your Name
-    email: your.email@example.com
+  - name: Simon Chapman
+    email: simonchapman1986@gmail.com
