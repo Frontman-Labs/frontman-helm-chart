@@ -8,7 +8,8 @@ A Helm chart for deploying the Frontman API Gateway
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| Simon Chapman | <simonchapman1986@gmail.com> |  |
+| Simon Chapman | <simonchapman1986@gmail.com> | https://frontman-labs.github.io/frontman/ |
+| Aaron Parfitt | <aaronparfitt@protonmail.com> | https://frontman-labs.github.io/frontman/ |
 
 ## Values
 
