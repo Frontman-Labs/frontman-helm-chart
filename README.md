@@ -25,6 +25,11 @@ this will create a tgz of the chart
 helm package frontman --app-version 0.0.1 --version 0.0.1  --destination builds/
 ```
 
+obviously, we want to sign it - so assuming you have the correct rights to the correct key
+```
+helm package --sign --key "<name>" --keyring secring.gpg frontman --app-version 0.0.1 --version 0.0.1 --destination builds/
+```
+
 ### index
 ```
 helm repo index builds
