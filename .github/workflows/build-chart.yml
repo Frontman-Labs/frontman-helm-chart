@@ -56,10 +56,10 @@ jobs:
       
       - name: Build Chart Package
         run: |
-          echo "Building Version: ${{ github.event.inputs.version }} with image: ${{ github.event.inputs.image }}";
-          yq -yi '.gateway.image = "${{ github.event.inputs.image }}"' helm-chart/frontman/values.yaml;
+          echo "Building Version: ${{ inputs.version }} with image: ${{ inputs.image }}";
+          yq -yi '.gateway.image = "${{ inputs.image }}"' helm-chart/frontman/values.yaml;
           helm package --sign --key "frontman" --keyring secring.gpg --passphrase-file passphrase helm-chart/frontman \
-            --app-version ${{ github.event.inputs.version }} --version ${{ github.event.inputs.version }} \
+            --app-version ${{ inputs.version }} --version ${{ inputs.version }} \
             --destination helm-chart/builds;
           helm repo index helm-chart/builds;
 
