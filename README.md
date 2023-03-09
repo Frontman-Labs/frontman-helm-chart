@@ -15,6 +15,7 @@ Frontman can easily be installed using the provided helm chart. This helm chart 
   - [Install](#install)
   - [Review](#review)
   - [Uninstall](#uninstall)
+- [Actions](#actions)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -35,14 +36,14 @@ helm package --sign --key "<name>" --keyring secring.gpg frontman --app-version 
 helm repo index builds
 ```
 
-## install
+### install
 take note of the file outputted as will be version specific
 ```
 helm install frontman frontman-gateway-0.0.1.tgz
 ```
 
 
-## review
+### review
 Review the deployed chart
 ```
 helm list -n default
@@ -62,9 +63,42 @@ kubectl describe ingress frontman-gateway-ingress
 ```
 
 
-## uninstall
+### uninstall
 ```
 helm uninstall frontman
+```
+
+## Actions
+For github actions, we test using Act. You can use the example below to trigger this locally for packaging the helm chart.
+
+To run this test, you will need to create a GPG key. Ensure you provide the key name as `frontman`. Also ensure you **DO** choose a passphrase, as this is expected in the action.
+```bash
+gpg --full-generate-key
+```
+
+export the secring:
+```bash
+gpg --export-secret-keys >./secring.gpg
+```
+
+You will be required to create two files. These emulate the values available in github:
+```yaml
+# my.inputs
+image=hyperioxx/frontman:latest
+version=0.0.1
+```
+
+```yaml
+# my.secrets
+GITHUB_TOKEN=<PAT Token>
+PAT=<PAT Token>
+SECRING=<BASE64 encoded Secring.gpg>
+HELM_KEY_PASSPHRASE=frontman2023
+```
+
+Now you can run `act` to run the action (add the additional parameter `--reuse` to persist the docker container created to act as the runner. You have `exec` into this using docker to verify things installed and/or files generated etc).
+```bash
+act workflow_call --input-file my.inputs --secret-file my.secrets
 ```
 
 

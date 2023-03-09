@@ -1,4 +1,3 @@
-# values.yaml
 gateway:
   image: hyperioxx/frontman:latest
   serviceType: yaml

@@ -1,13 +1,22 @@
 name: Build Chart
 on:
   workflow_call:
+    inputs:
+      image:
+        required: true
+        description: The docker image we want to bake with our helm Chart
+        type: string
+      version:
+        required: true
+        description: The version of our package
+        type: string
 
 env:
   PROJECT: ${{ github.event.repository.name }}
   CODE_REPO: "frontman-labs/frontman-helm-chart"
 
 jobs:
-  alerts:
+  package:
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
@@ -19,3 +28,47 @@ jobs:
           repository: ${{ env.CODE_REPO }}
           ref: main
           path: helm-chart
+      
+      # Setup Python (faster than using Python container)
+      - name: Setup Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.9"
+
+      - name: Install YQ
+        if: steps.cache-pipenv.outputs.cache-hit != 'true'
+        run: |
+          pip install yq
+
+      - name: Install Helm
+        run: |
+          wget https://get.helm.sh/helm-v3.9.3-linux-amd64.tar.gz;
+          tar xvf helm-v3.9.3-linux-amd64.tar.gz;
+          mv linux-amd64/helm /usr/local/bin;
+          rm helm-v3.9.3-linux-amd64.tar.gz;
+          rm -rf linux-amd64;
+          helm version;
+
+      - name: Prepare Key/Cert
+        run: |
+          echo ${{ secrets.SECRING }} | base64 -d > secring.gpg;
+          echo ${{ secrets.HELM_KEY_PASSPHRASE}} > passphrase
+      
+      - name: Build Chart Package
+        run: |
+          echo "Building Version: ${{ github.event.inputs.version }} with image: ${{ github.event.inputs.image }}";
+          yq -yi '.gateway.image = "${{ github.event.inputs.image }}"' helm-chart/frontman/values.yaml;
+          helm package --sign --key "frontman" --keyring secring.gpg --passphrase-file passphrase helm-chart/frontman \
+            --app-version ${{ github.event.inputs.version }} --version ${{ github.event.inputs.version }} \
+            --destination helm-chart/builds;
+          helm repo index helm-chart/builds;
+
+      - name: Push to repository
+        if: ${{ !env.ACT }}
+        run: |
+          cd helm-chart
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "new build of chart added: ${{ inputs.version }}"
+          git push
