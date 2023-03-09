@@ -1,3 +1,5 @@
 # signing
 pubring.kbx
 secring.gpg
+my.inputs
+my.secrets
