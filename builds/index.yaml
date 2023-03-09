@@ -2,8 +2,21 @@ apiVersion: v1
 entries:
   frontman-gateway:
   - apiVersion: v2
+    appVersion: v0.0.20
+    created: "2023-03-09T12:43:47.125213165Z"
+    description: A Helm chart for deploying the Frontman API Gateway
+    digest: 86510b5656bf3d34f13b508c135983b1aa970b1e21ed8ffb163b27f5bd7f45ed
+    maintainers:
+    - email: simonchapman1986@gmail.com
+      name: Simon Chapman
+    name: frontman-gateway
+    type: application
+    urls:
+    - frontman-gateway-v0.0.20.tgz
+    version: v0.0.20
+  - apiVersion: v2
     appVersion: 0.0.4
-    created: "2023-03-09T12:09:26.068406472Z"
+    created: "2023-03-09T12:43:47.124963264Z"
     description: A Helm chart for deploying the Frontman API Gateway
     digest: 3626af07e2d453ddf4bea4ec00e4115446e47a050a5d8968912b733089390860
     maintainers:
@@ -16,7 +29,7 @@ entries:
     version: 0.0.4
   - apiVersion: v2
     appVersion: 0.0.3
-    created: "2023-03-09T12:09:26.067863272Z"
+    created: "2023-03-09T12:43:47.124700763Z"
     description: A Helm chart for deploying the Frontman API Gateway
     digest: fa79ba6570733ee2de94e364b3b8a0c058c3423eaae74e475be53ae98f54591b
     maintainers:
@@ -29,7 +42,7 @@ entries:
     version: 0.0.3
   - apiVersion: v2
     appVersion: 0.0.2
-    created: "2023-03-09T12:09:26.067593671Z"
+    created: "2023-03-09T12:43:47.124429862Z"
     description: A Helm chart for deploying the Frontman API Gateway
     digest: 7b912b366c7ca32f9587ec62977460d22ed6cca95d6d08ffafa19f2392d82a26
     maintainers:
@@ -42,7 +55,7 @@ entries:
     version: 0.0.2
   - apiVersion: v2
     appVersion: 0.0.1
-    created: "2023-03-09T12:09:26.067330471Z"
+    created: "2023-03-09T12:43:47.124118761Z"
     description: A Helm chart for deploying the Frontman API Gateway
     digest: 26d71a30f76bec59cd4283f2d82f7111f14b141eaab811647c014245ea12b48a
     maintainers:
@@ -53,4 +66,4 @@ entries:
     urls:
     - frontman-gateway-0.0.1.tgz
     version: 0.0.1
-generated: "2023-03-09T12:09:26.066870071Z"
+generated: "2023-03-09T12:43:47.123418658Z"
