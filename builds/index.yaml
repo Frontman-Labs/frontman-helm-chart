@@ -3,9 +3,9 @@ entries:
   frontman-gateway:
   - apiVersion: v2
     appVersion: --version
-    created: "2023-03-09T11:56:02.980638042Z"
+    created: "2023-03-09T12:09:26.068805372Z"
     description: A Helm chart for deploying the Frontman API Gateway
-    digest: f56a08e8ce1b996b87f04a8a867f551906b91207315d1d95e1e8f64201fa2b38
+    digest: c993e8c315e63c2f1f6b0919f1e13ceb55ac483c68502a24b1edb0141aa93b98
     maintainers:
     - email: simonchapman1986@gmail.com
       name: Simon Chapman
@@ -16,7 +16,7 @@ entries:
     version: 1.0.0
   - apiVersion: v2
     appVersion: 0.0.4
-    created: "2023-03-09T11:56:02.980386038Z"
+    created: "2023-03-09T12:09:26.068406472Z"
     description: A Helm chart for deploying the Frontman API Gateway
     digest: 3626af07e2d453ddf4bea4ec00e4115446e47a050a5d8968912b733089390860
     maintainers:
@@ -29,7 +29,7 @@ entries:
     version: 0.0.4
   - apiVersion: v2
     appVersion: 0.0.3
-    created: "2023-03-09T11:56:02.980096233Z"
+    created: "2023-03-09T12:09:26.067863272Z"
     description: A Helm chart for deploying the Frontman API Gateway
     digest: fa79ba6570733ee2de94e364b3b8a0c058c3423eaae74e475be53ae98f54591b
     maintainers:
@@ -42,7 +42,7 @@ entries:
     version: 0.0.3
   - apiVersion: v2
     appVersion: 0.0.2
-    created: "2023-03-09T11:56:02.979826128Z"
+    created: "2023-03-09T12:09:26.067593671Z"
     description: A Helm chart for deploying the Frontman API Gateway
     digest: 7b912b366c7ca32f9587ec62977460d22ed6cca95d6d08ffafa19f2392d82a26
     maintainers:
@@ -55,7 +55,7 @@ entries:
     version: 0.0.2
   - apiVersion: v2
     appVersion: 0.0.1
-    created: "2023-03-09T11:56:02.979556323Z"
+    created: "2023-03-09T12:09:26.067330471Z"
     description: A Helm chart for deploying the Frontman API Gateway
     digest: 26d71a30f76bec59cd4283f2d82f7111f14b141eaab811647c014245ea12b48a
     maintainers:
@@ -66,4 +66,4 @@ entries:
     urls:
     - frontman-gateway-0.0.1.tgz
     version: 0.0.1
-generated: "2023-03-09T11:56:02.979072414Z"
+generated: "2023-03-09T12:09:26.066870071Z"
