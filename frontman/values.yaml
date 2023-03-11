@@ -1,5 +1,5 @@
 gateway:
-  image: hyperioxx/frontman:v0.0.23
+  image: hyperioxx/frontman:v0.0.24
   serviceType: yaml
   mongoUrl: mongodb://mongo:27017
   apiAddr: 0.0.0.0:8080
