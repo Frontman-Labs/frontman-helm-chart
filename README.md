@@ -9,37 +9,64 @@ Frontman can easily be installed using the provided helm chart. This helm chart 
 
 ## Glossary
 
-- [Helm](#helm)
-  - [Package](#package)
-  - [Index](#index)
-  - [Install](#install)
-  - [Review](#review)
-  - [Uninstall](#uninstall)
-- [Actions](#actions)
-- [Contributing](#contributing)
-- [License](#license)
+- [Frontman Helm Chart](#frontman-helm-chart)
+  - [Glossary](#glossary)
+  - [Helm](#helm)
+    - [Getting Started](#getting-started)
+      - [Create a Namespace](#create-a-namespace)
+      - [Get Values](#get-values)
+      - [MongoDB](#mongodb)
+      - [Install Frontman](#install-frontman)
+    - [review](#review)
+    - [uninstall](#uninstall)
+    - [package](#package)
+    - [index](#index)
+  - [Actions](#actions)
+  - [Contributing](#contributing)
+  - [License](#license)
 
 ## Helm
-### package
-this will create a tgz of the chart
+
+### Getting Started
+
+To get started, you can add the Frontman Helm chart repository:
 ```
-helm package frontman --app-version 0.0.1 --version 0.0.1  --destination builds/
+helm repo add frontman https://frontman-labs.github.io/frontman-helm-chart/builds/
 ```
 
-obviously, we want to sign it - so assuming you have the correct rights to the correct key
-```
-helm package --sign --key "<name>" --keyring secring.gpg frontman --app-version 0.0.1 --version 0.0.1 --destination builds/
+
+#### Create a Namespace
+
+Create a new namespace for your Frontman deployment:
+
+```bash
+kubectl create namespace frontman
 ```
 
-### index
+#### Get Values
+
+You can use the helm show values command to get the default values for the Frontman Helm chart and save them to a values.yaml file for modification:
+
 ```
-helm repo index builds
+helm show values frontman/frontman-gateway > values.yaml
 ```
 
-### install
-take note of the file outputted as will be version specific
+#### MongoDB
+
+Frontman requires a MongoDB instance to store data in a cluster. You can use the Bitnami MongoDB Helm chart to install MongoDB with replication enabled:
+
 ```
-helm install frontman frontman-gateway-0.0.1.tgz
+helm install frontman-mongo bitnami/mongodb  --set "replicaSet.enabled=true" -n frontman
+```
+
+Note: The console will give you the MongoDB URL you need to add to your values.yaml file.
+
+#### Install Frontman
+
+Finally, you can install Frontman using the Helm chart and the modified values.yaml file:
+
+```
+helm install frontman frontman/frontman-gateway -f ./values.yaml -n frontman --wait
 ```
 
 
@@ -66,6 +93,22 @@ kubectl describe ingress frontman-gateway-ingress
 ### uninstall
 ```
 helm uninstall frontman
+```
+
+### package
+this will create a tgz of the chart
+```
+helm package frontman --app-version 0.0.1 --version 0.0.1  --destination builds/
+```
+
+obviously, we want to sign it - so assuming you have the correct rights to the correct key
+```
+helm package --sign --key "<name>" --keyring secring.gpg frontman --app-version 0.0.1 --version 0.0.1 --destination builds/
+```
+
+### index
+```
+helm repo index builds
 ```
 
 ## Actions

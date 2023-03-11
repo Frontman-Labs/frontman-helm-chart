@@ -1,9 +1,9 @@
 gateway:
   image: hyperioxx/frontman:v0.0.24
-  serviceType: yaml
-  mongoUrl: mongodb://mongo:27017
-  apiAddr: 0.0.0.0:8080
-  gatewayAddr: 0.0.0.0:8000
+  serviceType: mongo
+  mongoUrl: mongodb://<credetials>@<host and port>/frontman?authSource=admin
+  apiAddr: 0.0.0.0:8081
+  gatewayAddr: 0.0.0.0:8001
   apiSslEnabled: false
   apiSslCertPath: /certs/server.crt
   apiSslKeyPath: /certs/server.key
@@ -11,5 +11,8 @@ gateway:
   gatewaySslCertPath: /certs/server.crt
   gatewaySslKeyPath: /certs/server.key
 domain:
-  api: example.com
-  gateway: gateway.example.com
+  api: localhost
+tls:
+  enabled: false
+ingress:
+  enabled: true

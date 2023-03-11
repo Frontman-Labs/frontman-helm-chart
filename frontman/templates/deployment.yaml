@@ -2,22 +2,35 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontman-gateway
+  labels:
+    app.kubernetes.io/component: controller
+    app.kubernetes.io/name: frontman-gateway
+    app.kubernetes.io/part-of: frontman-gateway
 spec:
   selector:
     matchLabels:
-      app: frontman-gateway
+      app.kubernetes.io/component: controller
+      app.kubernetes.io/name: frontman-gateway
+      app.kubernetes.io/part-of: frontman-gateway
   replicas: 1
   template:
     metadata:
       labels:
-        app: frontman-gateway
+        app.kubernetes.io/component: controller
+        app.kubernetes.io/name: frontman-gateway
+        app.kubernetes.io/part-of: frontman-gateway
     spec:
+      dnsPolicy: ClusterFirst
       containers:
         - name: frontman-gateway
           image: {{ .Values.gateway.image }}
-          ports:
-            - containerPort: 8080
-            - containerPort: 8000
+          securityContext:
+            allowPrivilegeEscalation: true
+            capabilities:
+              add:
+              - NET_BIND_SERVICE
+              drop:
+              - ALL
           env:
             - name: FRONTMAN_SERVICE_TYPE
               value: "{{ .Values.gateway.serviceType }}"
