@@ -2,14 +2,31 @@ apiVersion: v1
 kind: Service
 metadata:
   name: frontman-gateway
+  labels:
+    app.kubernetes.io/component: controller
+    app.kubernetes.io/name: frontman-gateway
+    app.kubernetes.io/part-of: frontman-gateway
 spec:
   selector:
-    app: frontman-gateway
+    app.kubernetes.io/component: controller
+    app.kubernetes.io/name: frontman-gateway
+    app.kubernetes.io/part-of: frontman-gateway
+  externalTrafficPolicy: Local
+  ipFamilyPolicy: SingleStack
   ports:
-    - name: api
-      port: 8080
-      targetPort: 8080
-    - name: gateway
-      port: 8000
-      targetPort: 8000
+    - appProtocol: http
+      name: gateway
+      port: 80
+      protocol: TCP
+      targetPort: 8001
+    - appProtocol: http
+      name: api
+      port: 8081
+      protocol: TCP
+      targetPort: 8081
+    - appProtocol: https
+      name: https
+      port: 443
+      protocol: TCP
+      targetPort: https
   type: LoadBalancer
