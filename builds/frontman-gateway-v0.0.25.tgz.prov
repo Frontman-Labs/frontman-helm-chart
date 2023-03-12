@@ -1,0 +1,29 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+apiVersion: v2
+appVersion: v0.0.25
+description: A Helm chart for deploying the Frontman API Gateway
+maintainers:
+- - email: simonchapman1986@gmail.com
+  name: Simon Chapman
+name: frontman-gateway
+type: application
+version: v0.0.25
+
+...
+files:
+  frontman-gateway-v0.0.25.tgz: sha256:84a4202b055a51ae3318096386fbc50133239747caf78a1048e123df7bdf2c03
+-----BEGIN PGP SIGNATURE-----
+
+wsDcBAEBCgAQBQJkDjgyCRADNOM4CPYwZwAAqWcMAEFjPoc7NHMhOEp3G7puEZwU
+qMJa0dbq9hDHYbdfHcSQfO3Wug422K5RAe+F4QTJbCXkn0UL3CyPPkxKUB7w+qWb
+0VQNzLS9JM07Q/XJY9ik38XkT8d/upM0hiFNeOybPtyUYvrljXyJ6zsUCeXD3mh2
+SIZxJmRLC0RTHnQ3u+qfybsLX7v3AtDc7ICbU9r/pCbYhbLKBZj/Jfy5wsUlmAW3
+Z9uvuK3dkk3Km0SacAk1s1AVmm2Gc7qRR0tsAJOoRq7s6GS5jMEX1Xa6hg/ggt09
+OUYDh3MoyqarUsl/VhWBjrjP3Ld2S83ftFSdo7MNN4qD0UvRWpcypthu4HdqfhuY
+SG849vuh0HaGjN+TRHTmwOUG816Os0bV6PDBHvUtTUMPfaISjAdXeUNJxkJ2CPvg
+dYjNGeU4abAiEAxdTcL7QWvzm584ZpIYZTqjAgZucQ1NPACJhQspdX3Lmlbjv43k
+I9xKEiFmAfrz6YPQzGxL0Ltt1pXkRvLHB6EbxKVmEw==
+=oCQI
+-----END PGP SIGNATURE-----
